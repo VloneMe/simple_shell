@@ -9,12 +9,16 @@
  */
 int _strcmp(char *str1, char *str2)
 {
-	while (*str1 && *str1 == *str2)
+	unsigned int num = 0;
+
+	while (str1[num])
 	{
-		str1++;
-		str2++;
+		if (str1[num] != str2[num])
+			return (0);
+		num++;
 	}
-	return (*str1 == *str2);
+
+	return (1);
 }
 
 
@@ -84,21 +88,27 @@ int _strint(char *str)
 {
 	int sign = 1;
 	unsigned int total = 0;
+	char null_flag = 0;
 
 	if (str == NULL)
 		return (0);
-
-	if (*str == '-')
+	while (*str)
 	{
-		sign = -1;
+		if (*str == '-')
+			sign *= -1;
+		if (*str >= '0' && *str <= '9')
+		{
+			null_flag = 1;
+			total = total * 10 + (*str - '0');
+		}
+		else if (*str < '0' || *str > '9')
+		{
+			if (null_flag == 1)
+				break;
+		}
 		str++;
 	}
-
-	while (*str >= '0' && *str <= '9')
-	{
-		total = total * 10 + (*str - '0');
-		str++;
-	}
-
-	return (sign * total);
+	if (sign < 0)
+		total = (-1 * (total));
+	return (total);
 }
