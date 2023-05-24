@@ -16,20 +16,20 @@ void execute_child(char **command, char *name, char **envp, int loops)
 	pid = fork();
 	if (pid < 0)
 	{
-		perror("Error: fork failed");
-		exit(1);
+		perror("Error: fork Error");
+		freeMem_and_exit(command);
 	}
 	else if (pid == 0)
 	{
 		execute_command(command, name, envp, loops);
-		exit(0);
+		free_memory(command);
 	}
 	else
 	{
 		if (waitpid(pid, &status, 0) < 0)
 		{
 			perror("Error: waitpid failed");
-			exit(1);
+			freeMem_and_exit(command);
 		}
 	}
 
