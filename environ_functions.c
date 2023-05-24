@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * exitt - exits the shell with or without a return of status n
+ * handle_exit - exits the shell
  * @arv: array of words of the entered line
  */
 void handle_exit(char **arv)
@@ -23,9 +23,10 @@ void handle_exit(char **arv)
 }
 
 /**
- * _atoi - converts a string into an integer
- *@str: pointer to a string
- *Return: the integer
+ * _strToInt - convert string into an integer
+ * @str: pointer to string
+ *
+ * Return: converted string
  */
 int _strToInt(char *str)
 {
