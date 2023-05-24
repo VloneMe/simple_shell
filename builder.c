@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
-* checkbuild - checks if the command is a buildin
-*
-* @arv: array of arguments
-* Return: 0 (success)
-*/
+ * handle_build - handle buitin commands
+ * @arv: array of arguments
+ * 
+ * Return: 0 (success)
+ */
 void(*handle_build(char **arv))(char **arv)
 {
 	int i, j;
