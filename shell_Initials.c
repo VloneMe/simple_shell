@@ -11,6 +11,7 @@ void handle_signal(int signal)
 	if (signal == SIGINT)
 	{
 		char *str = "\nalx_shell[$] ";
+
 		_puts(str);
 	}
 }
@@ -36,14 +37,16 @@ void _handleEOF(int len, char *buffer)
 }
 
 /**
- * prompt - A prompt handler function that prints the prompt
+ * _prompt - function that print the prompt
  *
  * Return: Nothing.
  */
 void _prompt(void)
 {
-	if (isatty(STDIN_FILENO)){
+	if (isatty(STDIN_FILENO))
+	{
 		char *str = "alx_shell[$] ";
+
 		_puts(str);
 	}
 }
