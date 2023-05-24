@@ -9,16 +9,19 @@
  */
 void free_memory(char **command)
 {
-	size_t i = 0;
+	size_t num = 0;
 
 	if (command == NULL)
 		return;
 
-	for (; command[i] != NULL; i++)
+	while (command[num])
 	{
-		free(command[i]);
-		command[i] = NULL;
+		free(command[num]);
+		num++;
 	}
+
+	if (command[num] == NULL)
+		free(command[num]);
 	free(command);
 }
 
@@ -32,14 +35,19 @@ void free_memory(char **command)
  */
 void freeMem_and_exit(char **command)
 {
-	size_t i = 0;
+	size_t num = 0;
 
 	if (command == NULL)
 		return;
 
-	for (; command[i] != NULL; i++)
-		free(command[i]);
+	while (command[num])
+	{
+		free(command[num]);
+		num++;
+	}
 
+	if (command[num] == NULL)
+		free(command[num]);
 	free(command);
 	exit(EXIT_FAILURE);
 }

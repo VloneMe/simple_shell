@@ -15,6 +15,7 @@ int main(int argc, char **argv, char **envp)
 	size_t buffer_size = 0;
 	ssize_t checked_chars = 0;
 	int loops = 0;
+	(void)argc;
 
 	while (1)
 	{
@@ -22,8 +23,6 @@ int main(int argc, char **argv, char **envp)
 		prompt_handler();
 		signal(SIGINT, handle_signal);
 		checked_chars = getline(&buffer, &buffer_size, stdin);
-
-		(void)argc;
 
 		if (checked_chars == EOF)
 			handle_eof(buffer);
