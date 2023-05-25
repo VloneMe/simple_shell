@@ -35,29 +35,3 @@ void execute_child(char **command, char *name, char **envp, int loops)
 
 	free_memory(command);
 }
-
-
-/**
-  * dir_changes - This function changes the current working directory.
-  *
-  * @path: New current working directory.
-  * Return: 0 on success, -1 on failure.
-  */
-int dir_changes(char *path)
-{
-	if (path == NULL)
-	{
-		char *buf = NULL;
-		size_t size = 1024;
-
-		path = getcwd(buf, size);
-	}
-
-	if (chdir(path) == -1)
-	{
-		perror(path);
-		return (98);
-	}
-
-	return (1);
-}
