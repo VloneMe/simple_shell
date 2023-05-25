@@ -43,7 +43,7 @@ void execute_child(char **command, char *name, char **envp, int loops)
   * @path: New current working directory.
   * Return: 0 on success, -1 on failure.
   */
-int dir_changes(const char *path)
+int dir_changes(char *path)
 {
 	if (path == NULL)
 	{

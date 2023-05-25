@@ -31,7 +31,7 @@ int main(int argc, char **argv, char **envp)
 		else if (*buffer == '#')
 		{
 			free(buffer);
-			continue
+			continue;
 		}
 		else
 		{
