@@ -13,10 +13,6 @@
 /*### Main program Shell file ###*/
 int main(int argc, char **argv, char **envp);
 
-/*### Shell environment control ###*/
-int _setenv(const char *var_name, const char *value);
-int _unsetenv(const char *var_name);
-
 /*### functions to Initialize shell ###*/
 void prompt_handler(void);
 void handle_signal(int signals);
@@ -26,7 +22,7 @@ void handle_exit(char **input_command);
 
 /*### functions to child process Creation ###*/
 void execute_child(char **command, char *shell_name, char **envp, int loops);
-int dir_changes(char *directory);
+int dir_changes(const char *dir);
 
 
 /*### functions to execute command ###*/
@@ -51,4 +47,5 @@ unsigned int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
 int _strint(char *s);
 char *_strcat(char *dest, char *src);
+
 #endif /*### _SHELL_H_ ###*/
