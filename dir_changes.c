@@ -3,53 +3,27 @@
 /**
   * dir_changes - This function changes the current working directory.
   *
-  * @directory: New current working directory.
+  * @dir: New current working directory.
   * Return: 0 on success, -1 on failure.
   */
-int dir_changes(char *directory)
+int dir_changes(const char *dir)
 {
-	char *current_dir = NULL;
-	char *home_dir = getenv("HOME");
+	char *buffer = NULL;
+	size_t buffer_size = 1024;
 
-	if (directory == NULL || *directory == '\0')
+	if (dir == NULL)
 	{
-		directory = home_dir;
-		if (directory == NULL)
-		{
-			fprintf(stderr, "cd: %s: No $HOME variable set\n", directory);
-			return (-1);
-		}
+		buffer = (char *)malloc(buffer_size * sizeof(char));
+		dir = getcwd(buffer, buffer_size);
 	}
-	if (strcmp(directory, "-") == 0)
+
+	if (chdir(dir) == -1)
 	{
-		directory = getenv("OLDPWD");
-		if (directory == NULL)
-		{
-			fprintf(stderr, "cd: OLDPWD not set\n");
-			return (-1);
-		}
-		printf("%s\n", directory);
+		perror(dir);
+		free(buffer);
+		return (98);
 	}
-	current_dir = getenv("PWD");
-	if (current_dir == NULL)
-	{
-		fprintf(stderr, "cd: PWD not set\n");
-		return (-1);
-	}
-	if (chdir(directory) != 0)
-	{
-		perror("cd");
-		return (-1);
-	}
-	if (setenv("PWD", getcwd(NULL, 0), 1) != 0)
-	{
-		perror("cd");
-		return (-1);
-	}
-	if (setenv("OLDPWD", current_dir, 1) != 0)
-	{
-		perror("cd");
-		return (-1);
-	}
-	return (0);
+
+	free(buffer);
+	return (1);
 }
