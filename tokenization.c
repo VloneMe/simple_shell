@@ -10,14 +10,14 @@
 char **tokenize(char *buffer, const char *delim)
 {
 	char *token = NULL, **commands = NULL;
-	size_t bufsize = 0;
-	int i = 0;
+	size_t buffer_size = 0;
+	int num = 0;
 
 	if (buffer == NULL)
 		return (NULL);
 
-	bufsize = _strlen(buffer);
-	commands = malloc((bufsize + 1) * sizeof(char *));
+	buffer_size = _strlen(buffer);
+	commands = malloc((buffer_size + 1) * sizeof(char *));
 	if (commands == NULL)
 	{
 		perror("Unable to allocate buffer");
@@ -29,17 +29,17 @@ char **tokenize(char *buffer, const char *delim)
 	token = strtok(buffer, delim);
 	while (token != NULL)
 	{
-		commands[i] = malloc(_strlen(token) + 1);
-		if (commands[i] == NULL)
+		commands[num] = malloc(_strlen(token) + 1);
+		if (commands[num] == NULL)
 		{
 			perror("Unable to allocate buffer");
 			free_memory(commands);
 			return (NULL);
 		}
-		_strcpy(commands[i], token);
+		_strcpy(commands[num], token);
 		token = strtok(NULL, delim);
-		i++;
+		num++;
 	}
-	commands[i] = NULL;
+	commands[num] = NULL;
 	return (commands);
 }
