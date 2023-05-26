@@ -28,11 +28,6 @@ int main(int argc, char **argv, char **envp)
 			handle_eof(buffer);
 		else if (*buffer == '\n')
 			free(buffer);
-		else if (*buffer == '#')
-		{
-			free(buffer);
-			continue;
-		}
 		else
 		{
 			buffer[_strlen(buffer) - 1] = '\0';
