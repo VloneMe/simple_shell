@@ -51,32 +51,4 @@ unsigned int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
 int _strint(char *s);
 char *_strcat(char *dest, char *src);
-
-
-/**
- * struct Alias - Structure for storing an alias.
- * @name: The name of the alias.
- * @value: The value of the alias.
- * @next: Pointer to the next alias.
- */
-typedef struct Alias
-{
-	char *name;
-	char *value;
-	struct Alias *next;
-} Alias;
-
-/*### Alias handler functions ###*/
-void handle_alias(char **command);
-void print_aliases(void);
-void print_alias_value(char *name);
-void define_alias(char *alias);
-Alias *find_alias(char *name);
-Alias *create_alias(char *name, char *value);
-void add_alias(Alias *alias);
-char *_strdup(char *str);
-char *_intStr(int num, char *str);
-
-
 #endif /*### _SHELL_H_ ###*/
-
