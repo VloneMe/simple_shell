@@ -42,12 +42,6 @@ int main(int argc, char **argv, char **envp)
 				handle_exit(command);
 			else if (_strcmp(command[0], "cd") != 0)
 				dir_changes(command[1]);
-			else if (_strcmp(command[0], "setenv") != 0)
-				_setenv(command[1], command[2]);
-			else if (_strcmp(command[0], "unsetenv") != 0)
-				_unsetenv(command[1]);
-			else if (_strcmp(command[0], "alias") != 0)
-				handle_alias(command);
 			else
 				execute_child(command, argv[0], envp, loops);
 		}
